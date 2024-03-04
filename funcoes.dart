@@ -1,24 +1,58 @@
-void main(List<String> args) {
-  print("Funções");
+void main(List<String> arguments) {
+  print(arguments);
 
-  calcularArea(12, 34);
-  calcularArea(12, 0);
+  var list = [1, 2, 3, 4, 5];
 
-  Pessoa pessoa = new Pessoa(12, "Sebastiao", 12);
+  list.forEach(printElement);
 
-  pessoa.idade = 12;
+  print("oalsdfadsfadfa--------------------------------------------");
+  list
+      .where((element) => element == 2)
+      .forEach((element) => print("Hi , found"));
 
-  print("${pessoa.nome}");
+  print(loudify("Sebastiao Afonso Domingos"));
+
+  var fruits = ["apples", "bananas", "oranges"];
+
+  fruits
+      .map((e) => e.toUpperCase())
+      .forEach((element) => print('$element : ${element.length}'));
 }
 
-void calcularArea(int lado1, int lado2) {
-  print("A area do quadrado e : ${lado1 * lado1}");
+void printElement(int element) {
+  print(element);
 }
 
-class Pessoa {
-  String nome;
-  int idade;
-  double peso;
+var loudify = (msg) => "$msg !!!!!!!!";
 
-  Pessoa(this.idade, this.nome, this.peso);
+void calculateArea({int lado1 = 1, required int? lado2}) {
+  if (lado2 != null && lado1 != lado2) {
+    print("A area do rectangulo  e : ${lado1 * lado2}");
+  } else if (lado2 == null) {
+    print("A  area do quadrado e : ${lado1 * lado1}");
+  } else {
+    print("A  area do quadrado e : ${lado2 * lado2}");
+  }
+}
+
+String sand({String? from, String? msg, String? device}) {
+  var result = '$from says $msg';
+
+  if (device != null) {
+    return '$result with a $device';
+  }
+
+  return result;
+}
+
+Iterable<int> naturalsTo(int n) sync* {
+  int k = 0;
+  while (k < n) yield k++;
+}
+
+Stream<int> asyncNaturalsTo(int n) async* {
+  if (n > 0) {
+    yield n;
+    yield* asyncNaturalsTo(n - 1);
+  }
 }
