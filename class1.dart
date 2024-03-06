@@ -5,8 +5,6 @@ const double yOrigin = 0;
 
 void main(List<String> args) {
   print("ola");
-  const double n1 = 9.0;
-  const double n2 = 9.0;
 
   var point = new Point(3.3, 4.5);
   var point1 = new Point(1.3, 2.5);
